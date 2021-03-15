@@ -1,0 +1,39 @@
+<div class="card">
+    <div class="card-header">
+     Inscription
+    </div>
+    <div class="card-body">
+       <form action="#" method="post" (ngSubmit) = "register()" >
+          <div class="form-group">
+							<label for="lastName">Nom: </label>
+							<input [(ngModel)] = "user.lastName" type="text" class="form-control" id="lastName"  name="lastName">
+          </div>
+          <div class="form-group">
+							<label for="firstName">Prenom</label>
+							<input [(ngModel)] = "user.firstName" type="text" name="firstName" class="form-control" id="firstName" placeholder="">
+          
+          </div>
+          <div class="form-group">
+							<label for="phone">Phone</label>
+							<input [(ngModel)] = "user.phone" type="text" name="phone" class="form-control" id="phone" placeholder="">
+          </div>
+          <div class="form-group">
+							<label for="adresse">Adresse: </label>
+							<input [(ngModel)] = "user.adresse" type="text" name="adresse" class="form-control" id="adresse">
+          </div>
+          <div class="form-group">
+							<label for="email">Mail</label>
+							<input [(ngModel)] = "user.email" type="email" name="email" class="form-control" id="email" placeholder="">
+          
+          </div>
+          <div class="form-group">
+							<label for="pwd">Mot de passe</label>
+							<input [(ngModel)] = "user.password" type="password" name="pwd" class="form-control" id="pwd" placeholder="">
+            </div>
+           <button type="submit" class="btn btn-primary">Enrégistrez</button>
+      </form>
+    </div>
+    <div class="card-footer text-muted">
+      <a href="" >Déja membre?</a>
+    </div>
+</div>

@@ -1,0 +1,119 @@
+
+<div class="dashboard-main-wrapper">
+	
+		 <div   class="nav-left-sidebar sidebar-dark">
+			 <app-dashbord></app-dashbord>
+		 </div>
+		<div class="dashboard-wrapper">
+            <div class=" container">
+                <div class="row">
+                    			<div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+				                           <div class="card">
+                                <h5 class="card-header">Nouveau produit</h5>
+                                <div class="card-body">
+                                    <form  id="form" data-parsley-validate="" >
+                                        <div class="form-group row">
+                                           <!-- <label for="name" class="col-3 col-lg-2 col-form-label text-right">Nom</label> -->
+                                            <div class="col-7 col-lg-8">
+                                                <input [(ngModel)]="product.name" name="name" class="form-control form-control-lg" id="name" type="text" placeholder="name">
+                                               
+                                            </div>
+                                    
+                                        </div>
+                                        <div class="form-group row">
+                                         
+                                            <div class="col-7 col-lg-8">
+                                               <select name="category" id="category"
+                                                class="form-control" [(ngModel)]="selectedCategory" >
+                                                <option *ngFor="let cat of categories" [ngValue]="cat">
+                                                    {{cat.name}}
+                                                </option>
+                                               </select>
+                                               
+                                               
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="form-group row">
+                                          
+                                            <div class="col-7 col-lg-8">
+                                                <input [(ngModel)]="product.buyPrice"  name="buyPrice" class="form-control form-control-lg" id="buyPrice" type="text" placeholder="prix achat">
+                                               
+                                            </div>
+                                           
+                                        </div>
+                                        <div class="form-group row">
+                                           
+                                            <div class="col-7 col-lg-8">
+                                                <input [(ngModel)]="product.sellPrice" name="sellPrice" class="form-control form-control-lg" id="name" type="text" placeholder="prix vente">
+                                               
+                                            </div>
+                                           
+                                        </div>
+                    
+                                       
+                                       
+                                        <div class="row pt-2 pt-sm-5 mt-1">
+                                           
+                                            <div class="col-sm-6 pl-0">
+                                                <p class="text-right">
+                                                    <button type="submit" class="btn btn-space btn-primary" (click)="save()" >Ajouter</button>
+                                                    <button class="btn btn-space btn-secondary" (click)="cancel()" >Annuler</button>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+            </div>
+             <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
+                            <div class="card">
+                                <h5 class="card-header">Liste des produits</h5>
+                                <div class="card-body">
+                                    <table class="table table-hover">
+                                        <thead>
+                                             <tr>
+                                                 <td class="row">
+                                                    <button class="btn btn-success" (click)="printProduct()">
+                                                        Imprimez
+                                                    </button>
+                                                    
+                                                      <a *ngIf="report.name" target="_blank" href="src/assets/reports/{{reportName.name}}">Telecharger l'etat </a>
+                                                 </td>
+                                             </tr>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                 <th scope="col">Catégories</th>
+                                                <th scope="col">Nom</th>
+                                                 <th scope="col">Prix Achat</th>
+                                                <th scope="col">Actions</th>
+                                               
+                                            </tr>
+                                        </thead>
+                                        <tbody *ngIf="products">
+                                            <tr *ngFor="let prod of products | paginate : {id:'listing_pagination',
+                                            itemsPerPage:5, currentPage:page, totalItems: totalRcord}">
+                                                <td>{{prod.id}}</td>
+                                                <td *ngIf="prod.category!=null">{{prod.category.name}}</td>
+                                                 <td *ngIf="prod.category===null"></td>
+                                                <td>{{prod.name}}</td>
+                                                <td>{{prod.buyPrice}}</td>
+                                                
+                                                <td>
+                                                   <button class="btn btn-warning" (click)="update(prod)" >Modifier</button>
+                                                    <button class="btn btn-danger" (click)="delete(prod)">Supprimer</button>
+                                                </td>
+                                               
+                                            </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                    <pagination-controls id="listing_pagination" maxSize="2" directionLinks="true"
+                                    (pageChange)="page=$event"> </pagination-controls>
+                                </div>
+                            </div>
+                        </div>
+            </div>
+ </div>
+        </div>
+	</div>
